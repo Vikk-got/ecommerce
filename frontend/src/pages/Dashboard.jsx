@@ -8,6 +8,7 @@ import {
   updateOrderStatus,
   getUsers,
   deleteUser,
+  toggleUserBlock,
 } from '../services/api';
 import '../styles/Dashboard.css';
 
