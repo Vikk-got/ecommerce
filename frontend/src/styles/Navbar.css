@@ -81,15 +81,92 @@
   background-color: #f0f0f0;
 }
 
+/* Tablet and below */
+@media (max-width: 968px) {
+  .navbar-container {
+    padding: 0 15px;
+  }
+
+  .navbar-brand {
+    font-size: 20px;
+  }
+
+  .navbar-links {
+    gap: 15px;
+  }
+
+  .navbar-link {
+    font-size: 13px;
+  }
+
+  .navbar-button {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
+  .navbar {
+    padding: 12px 0;
+  }
+
   .navbar-container {
     flex-direction: column;
     gap: 15px;
+  }
+
+  .navbar-brand {
+    font-size: 18px;
+    letter-spacing: 1px;
   }
 
   .navbar-links {
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
+    width: 100%;
+  }
+
+  .navbar-link {
+    font-size: 12px;
+  }
+
+  .navbar-user {
+    font-size: 12px;
+  }
+
+  .navbar-button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .cart-badge {
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+    top: -6px;
+    right: -10px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .navbar-brand {
+    font-size: 16px;
+  }
+
+  .navbar-links {
+    gap: 8px;
+  }
+
+  .navbar-link,
+  .navbar-user {
+    font-size: 11px;
+  }
+
+  .navbar-button {
+    padding: 5px 10px;
+    font-size: 11px;
   }
 }
