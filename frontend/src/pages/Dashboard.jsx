@@ -294,6 +294,7 @@ const Dashboard = () => {
                     <th>Name</th>
                     <th>Email</th>
                     <th>Role</th>
+                    <th>Status</th>
                     <th>Joined</th>
                     <th>Actions</th>
                   </tr>
@@ -304,8 +305,21 @@ const Dashboard = () => {
                       <td>{user.name}</td>
                       <td>{user.email}</td>
                       <td><span className={`dashboard-role-badge ${user.role}`}>{user.role.toUpperCase()}</span></td>
-                      <td>{new Date(user.createdAt).toLocaleDateString()}</td>
                       <td>
+                        <span className={`dashboard-status-badge ${user.isBlocked ? 'blocked' : 'active'}`}>
+                          {user.isBlocked ? 'BLOCKED' : 'ACTIVE'}
+                        </span>
+                      </td>
+                      <td>{new Date(user.createdAt).toLocaleDateString()}</td>
+                      <td className="dashboard-actions">
+                        {user.role !== 'admin' && (
+                          <button
+                            onClick={() => handleToggleBlock(user._id)}
+                            className={`dashboard-action-button ${user.isBlocked ? 'unblock' : 'block'}`}
+                          >
+                            {user.isBlocked ? 'UNBLOCK' : 'BLOCK'}
+                          </button>
+                        )}
                         <button onClick={() => handleDeleteUser(user._id)} className="dashboard-action-button delete">DELETE</button>
                       </td>
                     </tr>
