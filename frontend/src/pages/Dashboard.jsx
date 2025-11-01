@@ -128,6 +128,17 @@ const Dashboard = () => {
     }
   };
 
+  const handleToggleBlock = async (userId) => {
+    try {
+      const response = await toggleUserBlock(userId);
+      alert(response.message);
+      fetchData();
+    } catch (error) {
+      console.error('Error toggling user block:', error);
+      alert(error.response?.data?.message || 'Failed to toggle user block status');
+    }
+  };
+
   return (
     <div className="dashboard-container">
       <h1 className="dashboard-title">ADMIN DASHBOARD</h1>
