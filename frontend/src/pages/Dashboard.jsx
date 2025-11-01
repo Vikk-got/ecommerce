@@ -57,6 +57,18 @@ const Dashboard = () => {
 
   const handleProductSubmit = async (e) => {
     e.preventDefault();
+
+    // Validation
+    if (!formData.name || !formData.description || !formData.price || !formData.stock) {
+      alert('Please fill in all required fields');
+      return;
+    }
+
+    if (!editingProduct && !formData.image) {
+      alert('Please select an image for the product');
+      return;
+    }
+
     const data = new FormData();
     data.append('name', formData.name);
     data.append('description', formData.description);
@@ -70,8 +82,10 @@ const Dashboard = () => {
     try {
       if (editingProduct) {
         await updateProduct(editingProduct._id, data);
+        alert('Product updated successfully!');
       } else {
         await createProduct(data);
+        alert('Product created successfully!');
       }
       setShowForm(false);
       setEditingProduct(null);
@@ -79,7 +93,8 @@ const Dashboard = () => {
       fetchData();
     } catch (error) {
       console.error('Error saving product:', error);
-      alert(error.response?.data?.message || 'Failed to save product');
+      const errorMessage = error.response?.data?.message || error.message || 'Failed to save product. Make sure the backend server is running.';
+      alert(`Error: ${errorMessage}`);
     }
   };
 
