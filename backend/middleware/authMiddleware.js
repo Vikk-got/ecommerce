@@ -19,6 +19,11 @@ const authMiddleware = async (req, res, next) => {
         return res.status(401).json({ message: 'Not authorized, user not found' });
       }
 
+      // Check if user is blocked
+      if (req.user.isBlocked) {
+        return res.status(403).json({ message: 'Account has been blocked. Please contact support.' });
+      }
+
       next();
     } catch (error) {
       console.error(error);
