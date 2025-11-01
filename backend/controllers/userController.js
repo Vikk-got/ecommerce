@@ -44,8 +44,42 @@ const deleteUser = asyncHandler(async (req, res) => {
   res.json({ message: 'User deleted successfully' });
 });
 
+// @desc    Toggle user block status (admin only)
+// @route   PUT /api/users/:id/block
+// @access  Private/Admin
+const toggleUserBlock = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+
+  if (!user) {
+    res.status(404);
+    throw new Error('User not found');
+  }
+
+  // Prevent admin from blocking themselves
+  if (user._id.toString() === req.user._id.toString()) {
+    res.status(400);
+    throw new Error('Cannot block yourself');
+  }
+
+  // Prevent blocking other admins
+  if (user.role === 'admin') {
+    res.status(400);
+    throw new Error('Cannot block admin users');
+  }
+
+  // Toggle blocked status
+  user.isBlocked = !user.isBlocked;
+  await user.save();
+
+  res.json({
+    message: user.isBlocked ? 'User blocked successfully' : 'User unblocked successfully',
+    isBlocked: user.isBlocked,
+  });
+});
+
 module.exports = {
   getUsers,
   getUserProfile,
   deleteUser,
+  toggleUserBlock,
 };
