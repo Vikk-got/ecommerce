@@ -127,4 +127,9 @@ export const deleteUser = async (id) => {
   return response.data;
 };
 
+export const toggleUserBlock = async (id) => {
+  const response = await api.put(`/api/users/${id}/block`);
+  return response.data;
+};
+
 export default api;
