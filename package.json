@@ -1,0 +1,9 @@
+{
+    "name": "ecom-monorepo",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "npm run dev --prefix backend & npm run dev --prefix frontend",
+        "build": "cd frontend && npm install && npm run build"
+    }
+}
