@@ -58,9 +58,7 @@ const addToCart = asyncHandler(async (req, res) => {
     });
   } else {
     // Check if product already in cart
-    const existingItemIndex = cart.items.findIndex(
-      (item) => item.productId.toString() === productId
-    );
+    const existingItemIndex = cart.items.findIndex((item) => item.productId.toString() === productId);
 
     if (existingItemIndex > -1) {
       // Update quantity

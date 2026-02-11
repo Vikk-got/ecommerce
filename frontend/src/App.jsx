@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import PrivateRoute from './components/PrivateRoute';
 import AdminRoute from './components/AdminRoute';
 import Home from './pages/Home';
+import Store from './pages/Store';
 import ProductDetails from './pages/ProductDetails';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
@@ -11,6 +13,7 @@ import OrderSuccess from './pages/OrderSuccess';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
+import About from './pages/About'
 import './styles/App.css';
 
 function App() {
@@ -72,6 +75,14 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route
+          path="/store"
+          element={
+            <PrivateRoute user={user}>
+              <Store />
+            </PrivateRoute>
+          }
+        />
 
         <Route
           path="/checkout"
@@ -109,9 +120,11 @@ function App() {
             </AdminRoute>
           }
         />
+        <Route path="/about" element={<About />} />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

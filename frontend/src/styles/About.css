@@ -1,0 +1,130 @@
+/* --- ABOUT PAGE --- */
+.about-page {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* --- HERO SECTION --- */
+.about-hero-section {
+  position: relative;
+  height: 55vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Parallax effect */
+}
+
+.about-hero-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.about-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.about-hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+/* --- CONTENT & VALUES SECTIONS --- */
+.about-content-section,
+.about-values-section {
+  padding: 80px 0;
+}
+
+.about-section-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+}
+
+.about-story-text {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #a0a0a0;
+}
+
+.about-story-text p {
+  margin-bottom: 25px;
+}
+
+/* --- VALUES GRID --- */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.value-item {
+  background-color: #1a1a1a;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid #2a2a2a;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.value-item:hover {
+    transform: translateY(-5px);
+    border-color: #fff;
+}
+
+.value-title {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.value-description {
+  color: #a0a0a0;
+  line-height: 1.6;
+}
+
+/* --- RESPONSIVE STYLES --- */
+@media (max-width: 992px) {
+  .about-content-section,
+  .about-values-section {
+    padding: 60px 0;
+  }
+  
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-hero-section {
+    height: 40vh;
+  }
+
+  .about-section-title {
+    font-size: 24px;
+  }
+
+  .about-story-text {
+    font-size: 16px;
+  }
+}

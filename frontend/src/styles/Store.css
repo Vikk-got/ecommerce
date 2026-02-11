@@ -1,0 +1,132 @@
+/* Main container for the store page */
+.home-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Header section with title and search bar */
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  gap: 30px;
+  flex-wrap: wrap; /* Allows search to wrap on smaller screens */
+}
+
+.home-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333333;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.home-search {
+  padding: 12px 15px;
+  border: 2px solid #999999;
+  font-size: 16px; /* Prevents auto-zoom on iOS */
+  min-width: 300px;
+  transition: border-color 0.3s ease;
+}
+
+.home-search:focus {
+  outline: none;
+  border-color: #333333;
+}
+
+/* Categories filter section */
+.home-categories {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.category-button {
+  background-color: #ffffff;
+  color: #333333;
+  border: 2px solid #999999;
+  padding: 10px 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.category-button:hover {
+  background-color: #f0f0f0;
+  border-color: #333333;
+}
+
+/* Style for the currently selected category button */
+.category-button.active {
+  background-color: #333333;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+/* Grid for displaying product cards */
+.home-products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* Centered messages for loading or no products */
+.home-loading,
+.home-no-products {
+  text-align: center;
+  padding: 80px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #666666;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* --- RESPONSIVE STYLES --- */
+
+/* For smaller tablets and large phones */
+@media (max-width: 768px) {
+  .home-header {
+    flex-direction: column;
+    align-items: stretch; /* Make items take full width */
+    gap: 20px;
+  }
+
+  .home-title {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .home-search {
+    width: 100%;
+    min-width: initial; /* Reset min-width */
+  }
+}
+
+/* For smaller mobile devices */
+@media (max-width: 480px) {
+  .home-container {
+    margin-top: 20px;
+  }
+
+  .home-products-grid {
+    /* Switch to a single column for very small screens */
+    grid-template-columns: 1fr;
+  }
+
+  .category-button {
+    width: calc(50% - 5px); /* Two buttons per row */
+    font-size: 12px;
+    padding: 10px 5px;
+  }
+}

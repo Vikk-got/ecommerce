@@ -112,7 +112,7 @@ const getOrderById = asyncHandler(async (req, res) => {
 
   // Check if user owns the order or is admin
   if (order.userId._id.toString() !== req.user._id.toString() && req.user.role !== 'admin') {
-    res.status(403);
+    res.status(403);//replaces the userId field with user details (name & email) from the User collection.
     throw new Error('Access denied');
   }
 

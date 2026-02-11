@@ -78,7 +78,6 @@ const Cart = ({ setCart }) => {
               />
             ))}
           </div>
-
           <div className="cart-summary">
             <div className="cart-total">
               <span className="cart-total-label">TOTAL:</span>
@@ -95,3 +94,4 @@ const Cart = ({ setCart }) => {
 };
 
 export default Cart;
+ 

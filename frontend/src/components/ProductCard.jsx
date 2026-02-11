@@ -23,7 +23,7 @@ const ProductCard = ({ product }) => {
           {product.stock > 0 ? `${product.stock} in stock` : 'Out of stock'}
         </p>
         <Link to={`/product/${product._id}`} className="product-card-button">
-          VIEW DETAILS
+          BUY NOW
         </Link>
       </div>
     </div>
